@@ -2,25 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
-using System.Net.Http.Formatting;
 using System.Net.Mail;
 using System.Net.Mime;
-using System.Web.Http;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Itgroup_SiteContact.Controllers
+namespace ConsoleApplication1
 {
-    public class ContactController : ApiController
+    class Program
     {
-        // GET api/<controller>
-        public string Get()
+        static void Main(string[] args)
         {
             try
             {
-
-
-
-
                 //3lX6JcJ17fX1lyQ
                 //    smtp.sendgrid.net
                 //        azure_e848b0ff48010f88c67d17f60c2f07c4@azure.com
@@ -37,9 +31,9 @@ namespace Itgroup_SiteContact.Controllers
                 mailMsg.From = new MailAddress(email, "Tiago");
 
                 // Subject and multipart/alternative Body
-                mailMsg.Subject = "Assunto: " + DateTime.Now.ToShortTimeString(); ;
-                string text = "Texto";
-                string html = @"<p>Texto do Email</p>";
+                mailMsg.Subject = "subject";
+                string text = "text body";
+                string html = @"<p>html body</p>";
                 mailMsg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(text, null, MediaTypeNames.Text.Plain));
                 mailMsg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(html, null, MediaTypeNames.Text.Html));
 
@@ -50,44 +44,18 @@ namespace Itgroup_SiteContact.Controllers
 
                 smtpClient.Send(mailMsg);
 
-                return "Ok";
+                Console.Write("Ok");
+
 
             }
             catch (Exception ex)
             {
+                Console.WriteLine("Erro: " + ex.Message);
 
-                return "Erro: " + ex.Message;
             }
-        }
 
-        // GET api/<controller>/5
-        public string Get(int id)
-        {
-            return "value";
-        }
+            Console.ReadKey();
 
-        // POST api/<controller>
-        public void Post([FromBody]string value)
-        {
-
-            string teste = "teste";
-        }
-
-
-
-        // POST api/<controller>
-        //public void Post([FromBody]string Nome, [FromBody]string Email, [FromBody]string Mensagem)
-        //{
-        // }
-
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
         }
     }
 }
