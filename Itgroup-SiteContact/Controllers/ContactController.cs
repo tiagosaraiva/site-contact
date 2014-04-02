@@ -13,7 +13,13 @@ namespace Itgroup_SiteContact.Controllers
     public class ContactController : ApiController
     {
         // GET api/<controller>
-        public string Get()
+
+        public string Get() 
+        {
+            return "Get!";
+        }
+
+        public string GetOld()
         {
             try
             {
@@ -35,6 +41,7 @@ namespace Itgroup_SiteContact.Controllers
 
                 // From
                 mailMsg.From = new MailAddress(email, "Tiago");
+
 
                 // Subject and multipart/alternative Body
                 mailMsg.Subject = "Assunto: " + DateTime.Now.ToShortTimeString(); ;
