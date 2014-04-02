@@ -14,12 +14,9 @@ namespace Itgroup_SiteContact.Controllers
     {
         // GET api/<controller>
 
-        public string Get() 
-        {
-            return "Get!";
-        }
+        
 
-        public string GetOld()
+        public string Get()
         {
             try
             {
